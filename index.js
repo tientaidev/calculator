@@ -7,6 +7,7 @@ const deleteButton = document.querySelector('#delete-button');
 const equationScreen = document.querySelector('#equation-screen');
 const resultScreen = document.querySelector('#result-screen');
 
+// initial assignments
 firstOperand = '';
 secondOperand = '';
 operator = '';
@@ -36,9 +37,15 @@ function del() {
 }
 
 function assignOperands(numberCharacter) {
-  if (!operator) {
+  containsDecimal = operand => numberCharacter == '.' && operand.split('.').length == 2;
+  if (Number(result)) return;
+
+  if (!secondOperand && !operator) {
+    if (containsDecimal(firstOperand)) return;
     firstOperand += numberCharacter;
   } else {
+    console.log(secondOperand);
+    if (containsDecimal(secondOperand)) return;
     secondOperand += numberCharacter;
   }
 
@@ -76,12 +83,12 @@ function evaluate() {
         break;
       case '/':
         result = firstOperand / secondOperand;
-        if (!Number.isInteger(result)) result = result.toFixed(2);
         break;
       default:
         break;
     }
 
+    if (!Number.isInteger(result)) result = result.toFixed(2);
     updateScreen();
   }
 }
