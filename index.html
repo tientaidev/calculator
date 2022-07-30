@@ -1,26 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+<html class="bg-mainbg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="flex items-center h-screen">
+      <div class="cal-container min-w-[350px] max-w-[30%] mx-auto">
+        <h1 class="text-white text-[32px] mb-4">calc</h1>
+        <div class="screen">
+          <p id="equation-screen">‎</p>
+          
+          <p>
+            <span class="float-left">=</span>
+            <p id="result-screen">‎</p>
+          </p>
+        </div>
+        <div class="button-pad grid gap-6 grid-cols-4">
+          <button class="button orange-button number-button">7</button>
+          <button class="button orange-button number-button">8</button>
+          <button class="button orange-button number-button">9</button>
+          <button class="button blue-button" id="delete-button">DEL</button>
+          <button class="button orange-button number-button">4</button>
+          <button class="button orange-button number-button">5</button>
+          <button class="button orange-button number-button">6</button>
+          <button class="button orange-button operator-button">+</button>
+          <button class="button orange-button number-button">1</button>
+          <button class="button orange-button number-button">2</button>
+          <button class="button orange-button number-button">3</button>
+          <button class="button orange-button operator-button">-</button>
+          <button class="button orange-button">.</button>
+          <button class="button orange-button number-button">0</button>
+          <button class="button orange-button operator-button">/</button>
+          <button class="button orange-button operator-button">x</button>
+          <button class="button blue-button col-span-2" id="reset-button">RESET</button>
+          <button class="button red-button col-span-2" id="result-button">=</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
