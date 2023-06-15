@@ -1,7 +1,7 @@
 // query buttons and screen
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
-const resultButton = document.querySelector('#result-button');
+const evaluateButton = document.querySelector('#result-button');
 const resetButton = document.querySelector('#reset-button');
 const deleteButton = document.querySelector('#delete-button');
 const equationScreen = document.querySelector('#equation-screen');
@@ -11,11 +11,11 @@ const resultScreen = document.querySelector('#result-screen');
 firstOperand = '';
 secondOperand = '';
 operator = '';
-result= '‎';
+result= '';
 
 function updateScreen(reset=false) {
   if (reset) {
-    equation = '‎';
+    equation = '';
   } else {
     equation = `${firstOperand} ${operator} ${secondOperand}`;
   }
@@ -28,46 +28,43 @@ function reset() {
   firstOperand = '';
   secondOperand = '';
   operator = '';
-  result = '‎';
+  result = '';
   updateScreen(true);
 }
 
-function del() {
-
-}
+const containsDecimal = operand => operand.split('.').length == 2;
 
 function assignOperands(numberCharacter) {
-  containsDecimal = operand => numberCharacter == '.' && operand.split('.').length == 2;
-  if (Number(result)) return;
-
-  if (!secondOperand && !operator) {
-    if (containsDecimal(firstOperand)) return;
-    firstOperand += numberCharacter;
+  if (firstOperand) {
+    if (operator) {
+      if (containsDecimal(secondOperand) && numberCharacter === '.') return;
+      secondOperand += numberCharacter;
+    } else {
+      if (secondOperand) return; // impossible case
+      if (containsDecimal(firstOperand) && numberCharacter === '.') return;
+      firstOperand += numberCharacter;
+    }
   } else {
-    console.log(secondOperand);
-    if (containsDecimal(secondOperand)) return;
-    secondOperand += numberCharacter;
+    if (operator) return; // impossible case
+    if (secondOperand) return; // impossible case
+    if (containsDecimal(firstOperand) && numberCharacter === '.') return;
+    firstOperand += numberCharacter;
   }
 
   updateScreen();
 }
 
 function assignOperator(operatorCharacter) {
-  if (!firstOperand) return;
-
-  if (operator && secondOperand) {
-    firstOperand = result;
-    secondOperand = '';
-    result = '‎';
+  if (firstOperand && secondOperand && operator) evaluate();
+  if (firstOperand && !secondOperand) {
+    operator = operatorCharacter;
+    updateScreen();
   }
-
-  operator = operatorCharacter;
-  updateScreen();
+  return;
 }
 
 function evaluate() {
   if (firstOperand && secondOperand && operator) {
-
     firstOperand = Number(firstOperand);
     secondOperand = Number(secondOperand); 
 
@@ -89,8 +86,22 @@ function evaluate() {
     }
 
     if (!Number.isInteger(result)) result = result.toFixed(2);
+    firstOperand = result;
+    secondOperand = '';
+    operator = '';
     updateScreen();
   }
+}
+
+function del() {
+  if (secondOperand) secondOperand = secondOperand.slice(0, -1);
+  else if (operator) operator = '';
+  else if (firstOperand) firstOperand = firstOperand.slice(0, -1);
+  else return;
+
+  if (secondOperand.endsWith('.')) secondOperand = secondOperand.slice(0, -1);
+  if (firstOperand.endsWith('.')) firstOperand = firstOperand.slice(0, -1);
+  updateScreen();
 }
 
 numberButtons.forEach(button => {
@@ -98,10 +109,14 @@ numberButtons.forEach(button => {
 })
 
 operatorButtons.forEach(button => {
-  button.addEventListener('click', () => assignOperator(button.textContent));
+  button.addEventListener('click', () => { 
+    assignOperator(button.textContent); 
+    evaluate();
+  });
 })
 
 resetButton.addEventListener('click', reset);
-deleteButton.addEventListener('click', () => console.log('delete button'))
-
-resultButton.addEventListener('click', () => evaluate());
+evaluateButton.addEventListener('click', () => {
+  if (firstOperand && secondOperand && operator) evaluate();
+});
+deleteButton.addEventListener('click', del);

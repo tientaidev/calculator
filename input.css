@@ -11,12 +11,12 @@
 }
 
 @layer components {
-  .button-pad {
+  #buttons-container {
     @apply bg-keypadbg p-6 rounded-lg;
   }
 
   .button {
-    @apply text-center text-darkbluetext rounded-lg text-[32px] border-b-4 flex content-center items-center justify-center;
+    @apply text-center text-darkbluetext rounded-lg text-[32px] border-b-4 px-4;
   }
 
   .orange-button {
