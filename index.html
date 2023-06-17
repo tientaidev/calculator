@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html class="bg-mainbg" lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./dist/output.css" rel="stylesheet" />
     <script src="index.js" defer></script>
+    <script src="themeSwitch.js" defer></script>
     <title>Calcualator</title>
   </head>
-  <body>
+  <body class="bg-mainBgBlue">
     <div class="flex items-center h-screen" role="main">
-      <div class="cal-container mx-auto">
-        <h1 class="text-white text-[32px] mb-4">calc</h1>
-        <div class="screen">
+      <div class="mx-auto" id="calculator">
+        <div class="flex flex-wrap justify-between mb-4">
+          <h1 class= "text-[32px] align-bottom">calc</h1>
+          <div class="w-16 h-12">
+            <div class="w-5/6 h-1/2 flex justify-between mx-auto">
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+            </div>
+            <div class="bg-keyPadBgBlue rounded-xl w-full h-1/2 flex mx-auto">
+              <div class="h-full w-1/3 theme-switcher flex flex-wrap items-center content-center justify-center" id="theme-1"></div>
+              <div class="h-full w-1/3 theme-switcher flex flex-wrap items-center content-center justify-center" id="theme-2"></div>
+              <div class="h-full w-1/3 theme-switcher flex flex-wrap items-center content-center justify-center" id="theme-3"></div>
+            </div>
+          </div>
+        </div>
+        <div id="screen">
           <div id="equation-screen" class="h-10 m-3"></div>
           
           <p>
@@ -19,25 +34,25 @@
             <div id="result-screen" class="h-10 m-3"></div>
           </p>
         </div>
-        <div class="grid gap-6 grid-cols-4" id="buttons-container">
-          <button class="button orange-button number-button">7</button>
-          <button class="button orange-button number-button">8</button>
-          <button class="button orange-button number-button">9</button>
-          <button class="button blue-button" id="delete-button">DEL</button>
-          <button class="button orange-button number-button">4</button>
-          <button class="button orange-button number-button">5</button>
-          <button class="button orange-button number-button">6</button>
-          <button class="button orange-button operator-button">+</button>
-          <button class="button orange-button number-button">1</button>
-          <button class="button orange-button number-button">2</button>
-          <button class="button orange-button number-button">3</button>
-          <button class="button orange-button operator-button">-</button>
-          <button class="button orange-button number-button">.</button>
-          <button class="button orange-button number-button">0</button>
-          <button class="button orange-button operator-button">/</button>
-          <button class="button orange-button operator-button">x</button>
-          <button class="button blue-button col-span-2" id="reset-button">RESET</button>
-          <button class="button red-button col-span-2" id="result-button">=</button>
+        <div class="grid gap-6 grid-cols-4" id="keypad">
+          <button class="button number-button number-and-operator">7</button>
+          <button class="button number-button number-and-operator">8</button>
+          <button class="button number-button number-and-operator">9</button>
+          <button class="button delete-and-reset" id="delete-button">DEL</button>
+          <button class="button number-button number-and-operator">4</button>
+          <button class="button number-button number-and-operator">5</button>
+          <button class="button number-button number-and-operator">6</button>
+          <button class="button operator-button number-and-operator">+</button>
+          <button class="button number-button number-and-operator">1</button>
+          <button class="button number-button number-and-operator">2</button>
+          <button class="button number-button number-and-operator">3</button>
+          <button class="button operator-button number-and-operator">-</button>
+          <button class="button number-button number-and-operator">.</button>
+          <button class="button number-button number-and-operator">0</button>
+          <button class="button operator-button number-and-operator">/</button>
+          <button class="button operator-button number-and-operator">x</button>
+          <button class="button delete-and-reset col-span-2" id="reset-button">RESET</button>
+          <button class="button col-span-2" id="result-button">=</button>
         </div>
       </div>
     </div>

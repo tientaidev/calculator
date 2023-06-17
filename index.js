@@ -106,14 +106,14 @@ function del() {
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => assignOperands(button.textContent));
-})
+});
 
 operatorButtons.forEach(button => {
   button.addEventListener('click', () => { 
     assignOperator(button.textContent); 
     evaluate();
   });
-})
+});
 
 resetButton.addEventListener('click', reset);
 evaluateButton.addEventListener('click', () => {

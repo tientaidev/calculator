@@ -11,27 +11,51 @@
 }
 
 @layer components {
-  #buttons-container {
-    @apply bg-keypadbg p-6 rounded-lg;
+  #keypad {
+    @apply p-6 rounded-lg;
   }
 
   .button {
-    @apply text-center text-darkbluetext rounded-lg text-[32px] border-b-4 px-4;
+    @apply text-center rounded-lg text-[32px] border-b-4 px-6;
   }
 
-  .orange-button {
-    @apply bg-orangekeybg text-darkbluetext border-b-orangekeyshadow active:bg-orangekeyshadow active:border-b-orangekeybg;
+  .light-grayish-orange-button {
+    @apply bg-keyBgLightGrayishOrange text-textVeryDarkGrayishBlue border-b-keyShadowGrayishOrange active:bg-keyBgLightGrayishOrange active:border-b-keyShadowGrayishOrange hover:bg-keyShadowGrayishOrange hover:border-b-keyBgLightGrayishOrange;
   }
 
-  .blue-button {
-    @apply bg-bluekeybg text-white text-2xl border-b-bluekeyshadow active:bg-bluekeyshadow active:border-b-bluekeybg;
+  .desaturated-dark-blue-button {
+    @apply bg-keyBgBlue border-b-keyShadowBlue text-textWhite text-2xl active:bg-keyShadowBlue active:border-b-keyBgBlue hover:bg-keyShadowBlue;
   }
 
   .red-button {
-    @apply bg-redkeybg text-white border-b-redkeyshadow active:bg-redkeyshadow active:border-b-redkeybg;
+    @apply bg-keyBgRed text-white border-b-keyShadowDarkRed active:bg-keyShadowDarkRed active:border-b-keyBgRed hover:bg-keyShadowDarkRed;
   }
 
-  .screen {
-    @apply bg-screenbg text-white text-right p-6 rounded-md mb-4 text-[32px];
+  .dark-moderate-cyan-button {
+    @apply bg-keyBgDarkModerateCyan text-textWhite text-2xl border-b-keyShadowVeryDarkCyan active:bg-keyShadowVeryDarkCyan active:border-b-keyBgDarkModerateCyan hover:bg-keyShadowVeryDarkCyan;
+  }
+
+  .orange-button {
+    @apply bg-keyBgOrange text-textWhite border-b-keyShadowDarkOrange active:bg-keyShadowDarkOrange active:border-b-keyBgOrange hover:bg-keyShadowDarkOrange;
+  }
+
+  .light-grayish-yellow-button {
+    @apply bg-keyBgLightGrayishYellow text-textVeryDarkGrayishBlue border-b-keyShadowDarkGrayishOrange active:bg-keyShadowDarkGrayishOrange active:border-b-keyBgLightGrayishYellow hover:bg-keyShadowDarkGrayishOrange;
+  }
+
+  .dark-violet-button {
+    @apply bg-keyBgDarkViolet text-textWhite border-b-keyShadowVividMagenta active:bg-keyShadowVividMagenta active:border-b-keyBgDarkViolet hover:bg-keyShadowVividMagenta;
+  }
+
+  .pure-cyan-button {
+    @apply bg-keyBgPureCyan text-textWhite border-b-keyShadowSoftCyan active:bg-keyShadowSoftCyan active:border-b-keyBgPureCyan hover:bg-keyShadowSoftCyan;
+  }
+
+  .very-dark-violet-button {
+    @apply bg-keyBgVeryDarkViolet text-textWhite text-2xl border-b-keyShadowDarkMagenta active:bg-keyShadowDarkMagenta active:border-b-keyBgVeryDarkViolet hover:bg-keyShadowDarkMagenta;
+  }
+
+  #screen {
+    @apply text-right p-6 rounded-md mb-4 text-[32px];
   }
 }
