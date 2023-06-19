@@ -19,6 +19,10 @@
     @apply text-center rounded-lg text-[32px] border-b-4 px-6;
   }
 
+  #delete-button {
+    @apply px-1;
+  }
+
   .light-grayish-orange-button {
     @apply bg-keyBgLightGrayishOrange text-textVeryDarkGrayishBlue border-b-keyShadowGrayishOrange active:bg-keyBgLightGrayishOrange active:border-b-keyShadowGrayishOrange hover:bg-keyShadowGrayishOrange hover:border-b-keyBgLightGrayishOrange;
   }
