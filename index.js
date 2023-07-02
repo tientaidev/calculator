@@ -8,10 +8,16 @@ const equationScreen = document.querySelector('#equation-screen');
 const resultScreen = document.querySelector('#result-screen');
 
 // initial assignments
-firstOperand = '';
-secondOperand = '';
-operator = '';
-result= '';
+let firstOperand = '';
+let secondOperand = '';
+let operator = '';
+let result= '';
+
+function indexToAddSeparator(operand) {
+  const index = [operand.indexOf(','), operand.indexOf('.')].find(element => element !== -1) || operand.length;
+  if (index - 3 < 1) return -1;
+  return index;
+}
 
 function updateScreen(reset=false) {
   if (reset) {
@@ -35,20 +41,12 @@ function reset() {
 const containsDecimal = operand => operand.split('.').length == 2;
 
 function assignOperands(numberCharacter) {
-  if (firstOperand) {
-    if (operator) {
-      if (containsDecimal(secondOperand) && numberCharacter === '.') return;
-      secondOperand += numberCharacter;
-    } else {
-      if (secondOperand) return; // impossible case
-      if (containsDecimal(firstOperand) && numberCharacter === '.') return;
-      firstOperand += numberCharacter;
-    }
-  } else {
-    if (operator) return; // impossible case
-    if (secondOperand) return; // impossible case
+  if (!operator) {
     if (containsDecimal(firstOperand) && numberCharacter === '.') return;
     firstOperand += numberCharacter;
+  } else {
+    if (containsDecimal(secondOperand) && numberCharacter === '.') return;
+    secondOperand += numberCharacter;
   }
 
   updateScreen();

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./*.{html,js}"],
@@ -41,6 +43,10 @@ module.exports = {
         sans: ['League Spartan', 'sans-serif']
       }
     },
+    screens: {
+      'xs': '0px',
+      ...defaultTheme.screens,
+    }
   },
   plugins: [],
 }
