@@ -16,7 +16,7 @@
   }
 
   .button {
-    @apply text-center rounded-lg text-[32px] border-b-4 h-16 xs:px-3 sm:px-6;
+    @apply text-center rounded-lg text-[32px] border-b-4  sm:h-16 xs:px-3 sm:px-6;
   }
 
   #delete-button {
