@@ -8,7 +8,7 @@ This is a project that I create to improve my javascript and tailwindcss skills.
 # Check lists
 - [x] theme switch
 - [ ] testing
-- [ ] support mobile 
+- [x] support mobile 
 - [ ] support keyboard input
 
 # Built with
